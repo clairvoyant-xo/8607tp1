@@ -25,7 +25,7 @@ check_2:
     jmp luces_1
 
 delay:
-   ldi r20,0x0F
+    ldi r20,0x0F
     loop_a:
         ldi r21,0xFF
         loop_b:
