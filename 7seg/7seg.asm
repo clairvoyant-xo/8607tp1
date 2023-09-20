@@ -53,6 +53,9 @@ IntV0:
 		reti
 
 IntVC0:	
+		sbic PINB,0
+		reti
+
         push r16 
 		
 		in   r16,sreg
@@ -75,7 +78,7 @@ IntVC0:
 INIT_IRQ_PIN_CHANGE:	
 		ldi R16, (1<<PCIE0) 				
 		STS PCICR, R16
-		ldi R16, (1 << PCINT0) | (1 << PCINT1)
+		ldi R16, (1 << PCINT0)
 		STS PCMSK0, R16 
 		RET
 
