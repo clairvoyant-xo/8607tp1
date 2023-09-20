@@ -93,13 +93,18 @@ INIT_IRQ_INT0:
 		out EIMSK, R16					; Habilita máscara
 		RET    
 
+; actualizar_7segmentos:
+; Muestra un dígito en un display de 7 segmentos
+; (dp,g,f,e,d,c,b,a) = (PD7,PD6,PB5,PB4,PB3,PB2,PB1,PB0)
+; Entrada: r0 = digito decimal a mostrar en el display
+; Salida: pines de salida del display actualizados
+;---------------------------------------
 actualizar_7segmentos:  
     ldi zh, high(2*segmentos_decimales)
     ldi zl, low(2*segmentos_decimales)                        
     add zl, r0
     brcc no_incrementar_zh
     inc zh
-
 no_incrementar_zh:      
     lpm r0, z
     out portb, r0
