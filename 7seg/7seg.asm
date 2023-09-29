@@ -33,6 +33,10 @@ main:	ldi r20,0
 
 
 IntV0:  
+	sbic PIND,2
+	reti
+
+	call delay
         push r16 
 		
 		in   r16,sreg
@@ -56,6 +60,7 @@ IntVC0:
 		sbic PINB,0
 		reti
 
+	call delay
         push r16 
 		
 		in   r16,sreg
@@ -113,3 +118,18 @@ no_incrementar_zh:
 	ori r17, 0b00000001
     out portb, r17
     ret
+
+delay:
+   ldi r20,0x0F
+    loop_a:
+        ldi r21,0xFF
+        loop_b:
+            ldi r22,0xFF
+            loop_c:
+                dec r22
+                brne loop_c
+            dec r21
+            brne loop_b
+        dec r20
+        brne loop_a
+    ret      
