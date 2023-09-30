@@ -32,11 +32,11 @@ main:	ldi r20,0
         	rjmp loop      
 
 
-IntV0:  
-	sbic PIND,2
-	reti
+IntV0:
+		sbic PIND,2
+		reti
 
-	call delay
+		call delay
         push r16 
 		
 		in   r16,sreg
@@ -60,7 +60,7 @@ IntVC0:
 		sbic PINB,0
 		reti
 
-	call delay
+		call delay
         push r16 
 		
 		in   r16,sreg
@@ -120,16 +120,13 @@ no_incrementar_zh:
     ret
 
 delay:
-   ldi r20,0x0F
-    loop_a:
-        ldi r21,0xFF
-        loop_b:
-            ldi r22,0xFF
-            loop_c:
-                dec r22
-                brne loop_c
-            dec r21
-            brne loop_b
-        dec r20
-        brne loop_a
+    ldi  r21, 17
+    ldi  r22, 60
+    ldi  r23, 204
+L1: dec  r23
+    brne L1
+    dec  r22
+    brne L1
+    dec  r21
+    brne L1
     ret      

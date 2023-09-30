@@ -61,8 +61,8 @@ void reset(void){
 int main(void){
     reset();
     pos = 0;
-    actualizar_7seg(pos);
     while(1){
+    actualizar_7seg(pos);
     }
     return 0;
 }
