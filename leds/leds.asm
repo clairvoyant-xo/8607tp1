@@ -25,16 +25,13 @@ check_2:
     jmp luces_1
 
 delay:
-   ldi r20,0x0F
-    loop_a:
-        ldi r21,0xFF
-        loop_b:
-            ldi r22,0xFF
-            loop_c:
-                dec r22
-                brne loop_c
-            dec r21
-            brne loop_b
-        dec r20
-        brne loop_a
+    ldi  r18, 17
+    ldi  r19, 60
+    ldi  r20, 204
+L1: dec  r20
+    brne L1
+    dec  r19
+    brne L1
+    dec  r18
+    brne L1
     ret        
